@@ -41,19 +41,25 @@ struct OPTgen{
         while (count != val){
             if(liveness_intervals[count] >= cache_size){
                 cache = false;
+                cout <<"not cached: " << ", liveness_intervals [" << count << "]: " << liveness_intervals[count] <<endl;
                 break;
+                  
             }
+            cout <<"count: " << count  << ", liveness_intervals [" << count << "]: " << liveness_intervals[count] <<endl;
             count = (count+1) % liveness_intervals.size();
+           
         }
 
         if(cache){
             count = endVal;
             while(count != val){
                 liveness_intervals[count]++;
+                // cout << "updade count: " << count << ", liveness_intervals [" << count << "]: " << liveness_intervals[count] <<endl;
                 count = (count+1) % liveness_intervals.size();
             }
             num_cache++;
         }
+        cout<< "is Cache: " << cache << "endVal: " << endVal << " val: " << val <<endl;
         return cache;
     }
 };
